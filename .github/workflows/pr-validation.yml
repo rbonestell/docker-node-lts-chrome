@@ -16,15 +16,10 @@ jobs:
       run: docker build -t node-lts-chrome .
         
     - name: Test Node Installation
-      run: |
-        docker run --rm node-lts-chrome node --version
+      run: docker run --rm node-lts-chrome node --version
       
     - name: Test Chrome Installation
-      run: |
-        docker run --rm node-lts-chrome google-chrome --version
+      run: docker run --rm node-lts-chrome google-chrome --version
         
     - name: Test Headless Chrome
-      run: |
-        docker run --rm node-lts-chrome \
-          google-chrome --headless --disable-gpu --no-sandbox \
-          --dump-dom https://nodejs.org
+      run: docker run --rm node-lts-chrome google-chrome --headless --disable-gpu --no-sandbox --dump-dom https://google.com
