@@ -8,12 +8,13 @@ This image extends the official `node:lts` base image and adds a stable version 
 
 - Running headless browser tests
 - Executing automated UI tests
-- Generating PDFs or screenshots
 - Any pipeline tasks requiring both Node.js and Chrome
 
 ## Key Features
 
 - Built on `node:lts` for long-term maintainability
 - Includes the latest stable version of Google Chrome
-- Comes with Xvfb for virtual framebuffer support
-- Includes process management utilities via procps
+- Supports multiple architectures via `ARCH` build argument
+
+> [!IMPORTANT]  
+> The `google-chrome-stable` package is not available for ARM architectures, so the default `ARCH` argument value is set to `amd64`.
