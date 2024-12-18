@@ -1,0 +1,25 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      
+    - name: Build Docker Image
+      run: docker build -t node-lts-chrome .
+        
+    - name: Test Node Installation
+      run: docker run --rm node-lts-chrome node --version
+      
+    - name: Test Chrome Installation
+      run: docker run --rm node-lts-chrome google-chrome --version
+        
+    - name: Test Headless Chrome
+      run: docker run --rm node-lts-chrome google-chrome --headless --disable-gpu --no-sandbox --dump-dom https://google.com
